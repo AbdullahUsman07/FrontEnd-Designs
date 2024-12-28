@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'basicFormPage.dart';
+import 'Design1.dart';
 
 void main() {
-  runApp(const BasicForm());
+ runApp(LoginDesign());
 }
 
