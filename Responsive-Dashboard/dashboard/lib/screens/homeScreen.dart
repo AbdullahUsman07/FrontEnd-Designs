@@ -1,5 +1,6 @@
 
 
+import 'package:dashboard/widgets/sidebarmenu.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatelessWidget {
@@ -8,13 +9,23 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(
-        children: [
-          Container(),
-          Container(),
-          Container(),
-        ],
-      ),
+      body: SafeArea(
+        child: Row(
+          children: [
+            Expanded(
+              flex: 2,
+              child: SideBarMenu(),),
+              Expanded(
+                flex: 7,
+                child: Container(
+                color: Colors.green,
+              )),
+              Expanded(
+                flex: 3,
+                child: Container(
+                  color: Colors.yellow,
+                ))
+          ],))
     );
   }
 }
