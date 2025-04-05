@@ -1,5 +1,3 @@
-
-
 import 'package:dashboard/contants/colors.dart';
 import 'package:dashboard/widgets/piechart.dart';
 import 'package:dashboard/widgets/scheduledwidget.dart';
