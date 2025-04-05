@@ -1,5 +1,6 @@
 
 import 'package:dashboard/widgets/activitiescard.dart';
+import 'package:dashboard/widgets/bargraphcard.dart';
 import 'package:dashboard/widgets/headerwidget.dart';
 import 'package:dashboard/widgets/linebarchart.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,7 @@ class Dashboard extends StatelessWidget {
           ActivityDetailsCard(),
           LineChartCard(),
           const SizedBox(height: 20,),
+          BarGraphCard(),
         ],
       ),
     );

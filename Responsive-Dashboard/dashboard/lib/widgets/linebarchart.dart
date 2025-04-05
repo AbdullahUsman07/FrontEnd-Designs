@@ -13,6 +13,7 @@ class LineChartCard extends StatelessWidget {
     final data = LineData();
 
     return CustomCard(
+      padding: const EdgeInsets.all(8.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

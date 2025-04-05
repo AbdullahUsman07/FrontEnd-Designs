@@ -10,7 +10,7 @@ class ActivityDetailsCard extends StatelessWidget {
     final data = HealthDetails();
 
     return SizedBox(
-      height: 200,
+      height: 180,
       child: GridView.builder(
         shrinkWrap: true,
         itemCount: data.healthData.length,
