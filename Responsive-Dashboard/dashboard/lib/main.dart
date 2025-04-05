@@ -2,10 +2,9 @@ import 'package:dashboard/contants/colors.dart';
 import 'package:dashboard/screens/homeScreen.dart';
 import 'package:flutter/material.dart';
 
-void main(){
+void main() {
   runApp(const MyApp());
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -17,7 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: backgroundColor,
-        brightness: Brightness.dark
+        brightness: Brightness.dark,
       ),
       home: HomeScreen(),
     );
