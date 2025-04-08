@@ -14,7 +14,7 @@ class DrawerWidget extends StatelessWidget {
     return ListView.builder(
       itemCount: states.length + 1,
       itemBuilder:
-          (context, index) => (index == 0) ? buildHeader(fontSize) : buildBody(),
+          (context, index) => (index == 0) ? buildHeader(fontSize) : buildBody(index, fontSize),
     );
   }
 
@@ -37,8 +37,17 @@ class DrawerWidget extends StatelessWidget {
     );
   }
 
-  Widget buildBody(){
-    return Container();
+  Widget buildBody(int index, double fontsize){
+    return ListTile(
+      leading: Icon(Icons.location_city),
+      title: AutoSizeText(
+        states[index-1],
+        minFontSize: 18,
+        maxFontSize: 28,
+        style: TextStyle(fontSize: fontsize),
+      ),
+      selected: index ==1 ,
+    );
   }
   
 }
