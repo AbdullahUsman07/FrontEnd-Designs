@@ -10,8 +10,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Trip App"),
-        centerTitle: true,
+        title: const Text("Tour_App"),
         backgroundColor: Colors.green,
       ),
       drawer:
@@ -42,9 +41,15 @@ class HomeScreen extends StatelessWidget {
   }
 
   buildTablet() {
-    return Container(
-      color: Colors.pink,
-      child: Center(child: Text('This is Tablet')),
+    return Row(
+      children: [
+        Expanded(
+          flex: 2,
+          child: DrawerWidget()),
+          Expanded(
+            flex: 5,
+            child: PlaceGalleryWidget())
+      ],
     );
   }
 }

@@ -10,6 +10,54 @@ class PlaceDescriptionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     double fontSize = MediaQuery.of(context).size.width * 0.025;
 
+    return LayoutBuilder(
+  builder: (_, constraints) {
+    if (constraints.maxWidth > 600) {
+      return buildLargeWidget(fontSize, Colors.green);
+    } else {
+      return buildSmallWidget(fontSize);
+    }
+  },
+);
+
+  }
+
+  Widget buildLargeWidget(double fontSize, Color color) {
+    return Card(
+      clipBehavior: Clip.antiAlias,
+      elevation: 6,
+      margin: EdgeInsets.all(10.0),
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              children: [
+                Image.asset(
+                  place.image,
+                  height: 320,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
+                buildTitle(fontSize),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(15),
+                  child: buildButtons(Colors.green),
+                ),
+                buildDescription(fontSize),
+              ],
+            )),
+        ],
+      ),
+    );
+  }
+
+  Widget buildSmallWidget(double fontSize) {
     return ListView(
       children: [
         Image.asset(
@@ -20,7 +68,7 @@ class PlaceDescriptionWidget extends StatelessWidget {
         ),
         buildTitle(fontSize),
         const SizedBox(height: 7),
-        buildButtons(),
+        buildButtons(Colors.green),
         const SizedBox(height: 10),
         buildDescription(fontSize),
       ],
@@ -62,13 +110,13 @@ class PlaceDescriptionWidget extends StatelessWidget {
     );
   }
 
-  Widget buildButtons() {
+  Widget buildButtons(Color color) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        buildButton('CALL', Colors.green, Icons.call),
-        buildButton('LOCATION', Colors.green, Icons.location_on),
-        buildButton('SHARE', Colors.green, Icons.share_rounded),
+        buildButton('CALL', color, Icons.call),
+        buildButton('LOCATION', color, Icons.location_on),
+        buildButton('SHARE', color, Icons.share_rounded),
       ],
     );
   }
