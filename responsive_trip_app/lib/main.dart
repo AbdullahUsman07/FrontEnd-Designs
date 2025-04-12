@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_trip_app/screens/home_screen.dart';
 
@@ -10,6 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(  
+      scrollBehavior: CustomScrollBehavior(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
@@ -18,4 +20,13 @@ class MyApp extends StatelessWidget {
       home: HomeScreen(),
     );
   }
+}
+
+class CustomScrollBehavior extends MaterialScrollBehavior{
+
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+    PointerDeviceKind.touch,
+    PointerDeviceKind.mouse,
+  };
 }

@@ -1,10 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_trip_app/data/places_data.dart';
+import 'package:responsive_trip_app/model/place.dart';
+import 'package:responsive_trip_app/screens/description_screen.dart';
 import 'package:responsive_trip_app/widgets/drawer_widget.dart';
 import 'package:responsive_trip_app/widgets/place_gallery_widget.dart';
 import 'package:responsive_trip_app/widgets/responsive_widget.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  Place selectedPlace = allPlaces[0];
+  void changePlace(Place place){
+    setState(() {
+      selectedPlace =place;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,14 +44,20 @@ class HomeScreen extends StatelessWidget {
   buildMobile() {
     return Container(
       color: Colors.grey[200],
-      child: PlaceGalleryWidget(),
+      child: PlaceGalleryWidget(onPlaceChanged: changePlace,),
     );
   }
 
   buildDesktop() {
-    return Container(
-      color: Colors.orange,
-      child: Center(child: Text('This is Desktop')),
+    return Row(  
+      children: [
+        Expanded(
+          child: DrawerWidget()),
+        Expanded(
+          flex: 3,
+          child: buildBody(),
+        ),
+      ],
     );
   }
 
@@ -48,8 +69,27 @@ class HomeScreen extends StatelessWidget {
           child: DrawerWidget()),
           Expanded(
             flex: 5,
-            child: PlaceGalleryWidget())
+            child: PlaceGalleryWidget(onPlaceChanged: changePlace,))
       ],
+    );
+  }
+
+  Widget buildBody(){
+    return Container(
+      padding: const EdgeInsets.all(8.0),
+      color:Colors.grey[200],
+      child: Column(
+        children: [
+          Expanded(
+            child: PlaceGalleryWidget(
+              isHorizontal: true,
+              onPlaceChanged: changePlace,
+            ),),
+            Expanded(
+              flex: 2,
+              child: DescriptionScreen(place: selectedPlace)),
+        ],
+      ),
     );
   }
 }

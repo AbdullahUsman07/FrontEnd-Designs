@@ -23,36 +23,38 @@ class PlaceDescriptionWidget extends StatelessWidget {
   }
 
   Widget buildLargeWidget(double fontSize, Color color) {
-    return Card(
-      clipBehavior: Clip.antiAlias,
-      elevation: 6,
-      margin: EdgeInsets.all(10.0),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              children: [
-                Image.asset(
-                  place.image,
-                  height: 320,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                ),
-                buildTitle(fontSize),
-              ],
+    return SingleChildScrollView(
+      child: Card(
+        clipBehavior: Clip.antiAlias,
+        elevation: 6,
+        margin: EdgeInsets.all(10.0),
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                children: [
+                  Image.asset(
+                    place.image,
+                    height: 320,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+                  buildTitle(fontSize),
+                ],
+              ),
             ),
-          ),
-          Expanded(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(15),
-                  child: buildButtons(Colors.green),
-                ),
-                buildDescription(fontSize),
-              ],
-            )),
-        ],
+            Expanded(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: buildButtons(Colors.green),
+                  ),
+                  buildDescription(fontSize),
+                ],
+              )),
+          ],
+        ),
       ),
     );
   }
